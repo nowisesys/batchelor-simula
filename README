@@ -1,0 +1,11 @@
+
+    *********************************************
+     README FOR BATCHELOR SIMULATE
+    *********************************************
+
+Tests application that simulates some system load and random otuput from running
+the simula program (see SETUP). This application is intended to demonstrate how
+to setup task processing.
+
+
+// Anders Lövgren, 2018-10-18

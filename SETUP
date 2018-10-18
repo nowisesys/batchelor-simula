@@ -1,0 +1,27 @@
+
+    *********************************************
+     SETUP INSTRUCTIONS FOR BATCHELOR SIMULATE
+    *********************************************
+
+1. Run composer to install dependencies:
+
+    bash$> composer install
+
+2. Edit the file config/defaults.site and public/.htaccess to set correct location.
+
+    bash$> emacs config/defaults.site public/.htaccess
+
+3. Compile the simula program:
+
+    bash$> cd source
+    bash$> gcc -Wall -O2 simula.c -o simula
+
+4. Start the task processor:
+
+    bash$> cd utils
+    bash$> php processor.php
+
+You should now have this test application setup for processing incoming jobs thru
+web interface or web services. The utils/schdeuler.php can be used to check queued
+jobs.
+
