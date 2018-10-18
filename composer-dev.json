@@ -1,0 +1,50 @@
+{
+    "name": "bmc/batchelor-simula",
+    "description": "Batch job queue manager (simulate example)",
+    "type": "project",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Anders Lövgren",
+            "email": "anders.lovgren@bmc.uu.se"
+        },
+        {
+            "name": "Anders Lövgren",
+            "email": "andlov@nowise.se"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../uup-auth/"
+        },
+        {
+            "type": "path",
+            "url": "../uup-site"
+        },
+        {
+            "type": "path",
+            "url": "../uup-soap"
+        },
+        {
+            "type": "path",
+            "url": "../uup-web-component/"
+        },
+        {
+            "type": "path",
+            "url": "../batchelor2"
+        }
+    ],
+    "require": {
+        "bmc/uup-site": "@dev",
+        "bmc/uup-soap": "@dev",
+        "bmc/uup-auth": "@dev",
+        "bmc/uup-web-component": "@dev",
+        "bmc/batchelor": "@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Application\\": "source"
+        }
+    }
+}
