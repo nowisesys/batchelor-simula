@@ -40,35 +40,30 @@ class SimulaTask extends TaskAdapter implements Task
 
         public function execute(Directory $workdir, Directory $result, Interaction $interact)
         {
-                // 
-                // Get behavior to simulate:
-                // 
-                $status = $this->getBehavior();
-                $interact->getLogger()->info("Got $status behavior");
+                $behavior = $this->getBehavior();
+                $interact->getLogger()->info("Simulating $behavior behavior");
 
-                // 
-                // Throw exception or exit on request:
-                // 
-                if ($status == "exit") {
+                if ($behavior == "exit") {
                         exit(rand(0, 2));
-                } elseif ($status == "throw") {
+                } elseif ($behavior == "throw") {
                         throw new Exception("Test exception in simula task");
                 }
 
-                // 
-                // Run load simulation program:
-                // 
-                $command = $this->getCommand($workdir, $result, $status);
+                $command = $this->getCommand($workdir, $result, $behavior);
 
                 $interact->getLogger()->info("Running command $command");
-                $interact->runCommand($command);
+                $status = $interact->runCommand($command);
 
-                $interact->setStatus(new JobState($status));
+                if ($status->signaled) {
+                        $interact->getLogger()->error("Command was killed with signal %d", [$status->termsig]);
+                }
+
+                $interact->setStatus(self::getState($behavior));
         }
 
         private function getCommand(Directory $workdir, Directory $result, string $status): string
         {
-                return sprintf("%s/../simula -d %d -b -i %s -r %s -s $status", __DIR__, $this->getDuration(), $workdir->getPathname(), $result->getPathname());
+                return sprintf("%s/simula -d %d -b -i %s -r %s -s %s", dirname(__DIR__), $this->getDuration(), $workdir->getPathname(), $result->getPathname(), $status);
         }
 
         private function getBehavior(): string
@@ -89,6 +84,20 @@ class SimulaTask extends TaskAdapter implements Task
         private function getDuration(): int
         {
                 return $this->app->task->simula->duration;
+        }
+
+        private static function getState(string $behavior): JobState
+        {
+                switch ($behavior) {
+                        case 'success':
+                                return JobState::SUCCESS();
+                        case 'warning':
+                                return JobState::WARNING();
+                        case 'error':
+                                return JobState::ERROR();
+                        case 'crash':
+                                return JobState::CRASHED();
+                }
         }
 
 }
