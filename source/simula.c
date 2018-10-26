@@ -6,6 +6,8 @@
  * 2. Workload (busy loop or sleep).
  * 3. Capture of standard streams (stdout and stderr).
  * 
+ * Compile: gcc -Wall -O2 simula.c -o simula
+ * 
  * Author: Anders Lövgren
  * Date:   2007-11-05
  * 
@@ -181,7 +183,7 @@ int simulate_warning(const char *indata, const char *resdir)
 
 int simulate_crash(const char *indata, const char *resdir)
 {
-	kill(getppid(), SIGTERM);
+	kill(getpid(), SIGKILL);
 	return EXIT_CRASH;
 }
 
@@ -242,5 +244,5 @@ void usage(void)
 
 void version(void)
 {
-	printf("simula version 0.4.2\n");
+	printf("simula version 0.4.3\n");
 }
