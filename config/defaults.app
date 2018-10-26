@@ -29,7 +29,7 @@ return [
                                 'success' => 30,
                                 'warning' => 20,
                                 'error'   => 10,
-                                'crashed' => 10,
+                                'crash'   => 10,
                                 'exit'    => 15,
                                 'throw'   => 15
                         ]
