@@ -52,6 +52,7 @@ static int simulate_success(const char *indata, const char *resdir);
 static int simulate_error(const char *indata, const char *resdir);
 static int simulate_warning(const char *indata, const char *resdir);
 static int simulate_crash(const char *indata, const char *resdir);
+static int get_signal();
 static void dump_options(const char *indata, const char *resdir, int status, int duration, int endtime, int busy);
 static int write_file(const char *path, const char *msg);
 static void write_files(const char *resdir);
@@ -183,8 +184,20 @@ int simulate_warning(const char *indata, const char *resdir)
 
 int simulate_crash(const char *indata, const char *resdir)
 {
-	kill(getpid(), SIGKILL);
+	kill(getpid(), get_signal());
 	return EXIT_CRASH;
+}
+
+int get_signal()
+{
+	int signals[] = {
+			SIGILL, SIGABRT, SIGFPE, SIGKILL,
+			SIGSEGV, SIGPIPE, SIGALRM, SIGTERM,
+			SIGBUS, SIGSYS
+	};
+
+	srandom(time(NULL));
+	return signals[random() % 10];
 }
 
 void dump_options(const char *indata, const char *resdir, int status, int duration, int endtime, int busy)
