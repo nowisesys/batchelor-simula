@@ -1,5 +1,10 @@
 <?php
 
+// use Application\SimulaTask;
+
+
+use Application\SimulaTask;
+use Batchelor\Queue\Task\Service as TaskService;
 use Batchelor\System\Service;
 
 // 
@@ -14,7 +19,7 @@ use Batchelor\System\Service;
 // should always be instantiated (i.e. a session service).
 // 
 // [
-//      'qeuue' => new Queue()
+//      'queue' => new Queue()
 // ]
 // 
 // Example on using callable, in this case an closure. The name will be the
@@ -58,8 +63,12 @@ return [
         // 
         'cache'       => new Service(Service\Cache::class),
         // 
-        // The task processor service provides a task runner resository for the
+        // The task processor service provides a task runner repository for the
         // scheduled job consumer application.
         // 
-        'processor'   => new Service(Service\Processor::class)
+        'processor'   => function($name) {
+                $processor = new TaskService();
+                $processor->setDefault(new SimulaTask());
+                return $processor;
+        }
 ];

@@ -20,6 +20,22 @@ if (!ini_get("date.timezone")) {
 //
 return [
         // 
+        // The task to run:
+        // 
+        'task'    => [
+                'simula' => [
+                        'duration' => 10,
+                        'behavior' => [
+                                'success' => 30,
+                                'warning' => 20,
+                                'error'   => 10,
+                                'crashed' => 10,
+                                'exit'    => 15,
+                                'throw'   => 15
+                        ]
+                ]
+        ],
+        // 
         // The data directory where i.e. job queues are stored.
         // 
         'data'    => [

@@ -267,6 +267,6 @@ return array(
 //        /**
 //         * Dump parsed config to error log.
 //         */
-        'debug' => false,
+//        'debug' => false,
 
 );

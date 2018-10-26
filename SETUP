@@ -25,3 +25,4 @@ You should now have this test application setup for processing incoming jobs thr
 web interface or web services. The utils/schdeuler.php can be used to check queued
 jobs.
 
+// Anders Lövgren, 2018-10-26
