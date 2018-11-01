@@ -1,8 +1,5 @@
 <?php
 
-// use Application\SimulaTask;
-
-
 use Application\SimulaTask;
 use Batchelor\Queue\Task\Service as TaskService;
 use Batchelor\System\Service;

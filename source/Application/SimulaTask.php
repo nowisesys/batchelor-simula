@@ -43,22 +43,48 @@ class SimulaTask extends TaskAdapter implements Task
                 $behavior = $this->getBehavior();
                 $interact->getLogger()->info("Simulating $behavior behavior");
 
-                if ($behavior == "exit") {
-                        exit(rand(0, 2));
-                } elseif ($behavior == "throw") {
-                        throw new Exception("Test exception in simula task");
+                // 
+                // Handle bad behavior first (exit and throw):
+                // 
+                switch ($behavior) {
+                        case "exit":
+                                self::runBehaviorExit();
+                        case "throw":
+                                self::runBehaviorThrow();
                 }
 
-                $command = $this->getCommand($workdir, $result, $behavior);
+                // 
+                // Simulate normal behavior (i.e. run application):
+                // 
+                self::runBehaviorCommand(
+                    $interact, $this->getCommand($workdir, $result, $behavior)
+                );
 
+                // 
+                // Set job status:
+                // 
+                $interact->setStatus(self::getState($behavior));
+        }
+
+        private static function runBehaviorExit()
+        {
+                exit(rand(0, 2));
+        }
+
+        private static function runBehaviorThrow()
+        {
+                throw new Exception("Test exception in simula task");
+        }
+
+        private static function runBehaviorCommand(Interaction $interact, string $command)
+        {
                 $interact->getLogger()->info("Running command $command");
+
                 $status = $interact->runCommand($command);
 
                 if ($status->signaled) {
                         $interact->getLogger()->error("Command was killed with signal %d", [$status->termsig]);
                 }
-
-                $interact->setStatus(self::getState($behavior));
         }
 
         private function getCommand(Directory $workdir, Directory $result, string $status): string
