@@ -252,7 +252,7 @@ void usage(void)
 	printf("  -s status:  set exit status (success, warning, error or crash)\n");
 	printf("  -V:         show version\n");
 	printf("This program is released under GPL version 2 or later.\n");
-	printf("Send bug reports to anders.lovgren@bmc.uu.se\n");
+	printf("Send bug reports to andlov@nowise.se\n");
 }
 
 void version(void)
