@@ -94,17 +94,17 @@ return [
 //                ],
 //                'host1' => [
 //                        'type'   => 'remote',
-//                        'url'    => 'http://rosalie.bmc.uu.se/batchelor2',
+//                        'url'    => 'http://localhost/batchelor2a',
 //                        'weight' => 25
 //                ],
 //                'host2' => [
 //                        'type'   => 'remote',
-//                        'url'    => 'http://rosalie.bmc.uu.se/batchelor2',
+//                        'url'    => 'http://localhost/batchelor2b',
 //                        'weight' => 40
 //                ],
 //                'host3' => [
 //                        'type'   => 'remote',
-//                        'url'    => 'http://rosalie.bmc.uu.se/batchelor2',
+//                        'url'    => 'http://localhost/batchelor2c',
 //                        'weight' => 30
 //                ]
 //        ]
