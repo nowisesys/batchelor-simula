@@ -16,3 +16,5 @@ These changes has been done:
    task as default handler.
 
 3. Settings for load simulation task was added in config/defaults.app
+
+See https://github.com/nowisesys/batchelor
