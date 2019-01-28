@@ -13,12 +13,6 @@
             "email": "andlov@nowise.se"
         }
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://it.bmc.uu.se/andlov/proj/sci/batchelor/"
-        }
-    ],
     "require": {
         "bmc/batchelor": "^2.0"
     },
