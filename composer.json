@@ -1,5 +1,5 @@
 {
-    "name": "bmc/batchelor-simula",
+    "name": "nowise/batchelor-simula",
     "description": "Batch job queue manager (simulate example)",
     "type": "project",
     "license": "GPL-2.0-only",
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "bmc/batchelor": "^2.0"
+        "nowise/batchelor": "^2.0"
     },
     "autoload": {
         "psr-0": {

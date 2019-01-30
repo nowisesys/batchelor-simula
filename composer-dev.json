@@ -36,11 +36,11 @@
         }
     ],
     "require": {
-        "bmc/uup-site": "@dev",
-        "bmc/uup-soap": "@dev",
-        "bmc/uup-auth": "@dev",
-        "bmc/uup-web-component": "@dev",
-        "bmc/batchelor": "@dev"
+        "nowise/uup-site": "@dev",
+        "nowise/uup-soap": "@dev",
+        "nowise/uup-auth": "@dev",
+        "nowise/uup-web-component": "@dev",
+        "nowise/batchelor": "@dev"
     },
     "autoload": {
         "psr-0": {
